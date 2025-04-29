@@ -1,0 +1,1 @@
+import{Ma as n,Na as a,Xa as c,za as t}from"./chunk-GP4QNVJC.js";import"./chunk-FK42CRUA.js";var p=class e{static \u0275fac=function(o){return new(o||e)};static \u0275cmp=t({type:e,selectors:[["app-ahorcado"]],decls:2,vars:0,template:function(o,s){o&1&&(n(0,"p"),c(1,"ahorcado works!"),a())},encapsulation:2})};export{p as AhorcadoComponent};
