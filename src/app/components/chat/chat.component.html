@@ -1,1 +1,32 @@
-<p>chat works!</p>
+<body>
+  <div class="wrapper">
+    <div class="chat-container">
+      <div class="messages" #messagesDiv>
+        <div
+          *ngFor="let msg of messages()"
+          [ngClass]="{
+            'message-bubble': true,
+            sent: msg.sender === userName,
+            received: msg.sender !== userName
+          }"
+        >
+          <div class="sender-name">{{ msg.sender }}</div>
+          {{ msg.text }}
+          <div class="timestamp">
+            <!-- {{ msg.created_at | date: 'shortTime' }} -->
+            {{ formatMessageDate(msg.created_at) }}
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-input">
+        <input
+          [(ngModel)]="newMessage"
+          placeholder="Escribe un mensaje..."
+          (keyup.enter)="sendMessage()"
+        />
+        <button (click)="sendMessage()">Enviar</button>
+      </div>
+    </div>
+  </div>
+</body>

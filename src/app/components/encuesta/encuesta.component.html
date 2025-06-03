@@ -1,0 +1,278 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-header">Encuesta</div>
+        <div class="card-body">
+          <form [formGroup]="encuestaForm" (ngSubmit)="onSubmit()">
+            <h2>{{ mensaje }}</h2>
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input
+                type="text"
+                id="nombre"
+                formControlName="nombre"
+                class="form-control"
+                [ngClass]="{
+                  'input-error':
+                    encuestaForm.get('nombre')?.invalid &&
+                    (encuestaForm.get('nombre')?.touched ||
+                      encuestaForm.get('nombre')?.dirty)
+                }"
+                required
+              />
+              <div
+                *ngIf="
+                  encuestaForm.get('nombre')?.invalid &&
+                  (encuestaForm.get('nombre')?.touched ||
+                    encuestaForm.get('nombre')?.dirty)
+                "
+                class="error-message"
+              >
+                Este campo es obligatorio.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="apellido" class="form-label">Apellido</label>
+              <input
+                type="text"
+                id="apellido"
+                formControlName="apellido"
+                class="form-control"
+                [ngClass]="{
+                  'input-error':
+                    encuestaForm.get('apellido')?.invalid &&
+                    (encuestaForm.get('apellido')?.touched ||
+                      encuestaForm.get('apellido')?.dirty)
+                }"
+                required
+              />
+              <div
+                *ngIf="
+                  encuestaForm.get('apellido')?.invalid &&
+                  (encuestaForm.get('apellido')?.touched ||
+                    encuestaForm.get('apellido')?.dirty)
+                "
+                class="error-message"
+              >
+                Este campo es obligatorio.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="edad" class="form-label">Edad</label>
+              <input
+                type="number"
+                id="edad"
+                formControlName="edad"
+                class="form-control"
+                [ngClass]="{
+                  'input-error':
+                    encuestaForm.get('edad')?.invalid &&
+                    (encuestaForm.get('edad')?.touched ||
+                      encuestaForm.get('edad')?.dirty)
+                }"
+                required
+              />
+              <div
+                *ngIf="
+                  encuestaForm.get('edad')?.invalid &&
+                  (encuestaForm.get('edad')?.touched ||
+                    encuestaForm.get('edad')?.dirty)
+                "
+                class="error-message"
+              >
+                Debes ingresar una edad entre 18 y 99 años.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="telefono" class="form-label"
+                >Número de Teléfono</label
+              >
+              <input
+                type="number"
+                id="telefono"
+                formControlName="telefono"
+                class="form-control"
+                [ngClass]="{
+                  'input-error':
+                    encuestaForm.get('telefono')?.invalid &&
+                    (encuestaForm.get('telefono')?.touched ||
+                      encuestaForm.get('telefono')?.dirty)
+                }"
+                required
+              />
+              <div
+                *ngIf="
+                  encuestaForm.get('telefono')?.invalid &&
+                  (encuestaForm.get('telefono')?.touched ||
+                    encuestaForm.get('telefono')?.dirty)
+                "
+                class="error-message"
+              >
+                El número de teléfono debe contener entre 8 y 10 dígitos.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label"
+                >¿Cuántas estrellas le das a la página?</label
+              >
+              <div class="star-rating">
+                <label>
+                  <input
+                    type="radio"
+                    formControlName="estrellas"
+                    value="1"
+                    required
+                  />
+                  ⭐
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    formControlName="estrellas"
+                    value="2"
+                    required
+                  />
+                  ⭐⭐
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    formControlName="estrellas"
+                    value="3"
+                    required
+                  />
+                  ⭐⭐⭐
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    formControlName="estrellas"
+                    value="4"
+                    required
+                  />
+                  ⭐⭐⭐⭐
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    formControlName="estrellas"
+                    value="5"
+                    required
+                  />
+                  ⭐⭐⭐⭐⭐
+                </label>
+              </div>
+              <div
+                *ngIf="
+                  encuestaForm.get('estrellas')?.invalid &&
+                  (encuestaForm.get('estrellas')?.touched ||
+                    encuestaForm.get('estrellas')?.dirty)
+                "
+                class="error-message"
+              >
+                Debes seleccionar una opción.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Selecciona tus Juegos favoritos</label>
+              <div class="checkbox-group">
+                <label>
+                  <input
+                    type="checkbox"
+                    value="2048"
+                    (change)="onCheckboxChange($event)"
+                  />
+                  2048
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    value="Mayor o Menor"
+                    (change)="onCheckboxChange($event)"
+                  />
+                  Mayor o Menor
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    value="Preguntados"
+                    (change)="onCheckboxChange($event)"
+                  />
+                  Preguntados
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    value="Ahorcado"
+                    (change)="onCheckboxChange($event)"
+                  />
+                  Ahorcado
+                </label>
+              </div>
+            </div>
+
+            <div
+              *ngIf="
+                encuestaForm.get('juegosFavoritos')?.invalid &&
+                (encuestaForm.get('juegosFavoritos')?.touched ||
+                  encuestaForm.get('juegosFavoritos')?.dirty)
+              "
+              class="error-message"
+            >
+              Debes seleccionar al menos un juego favorito.
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label"
+                >Elige el juego que quisieras agregar a la página</label
+              >
+              <select formControlName="juegosAdd" class="form-select" required>
+                <option value="" selected>Selecciona una opción</option>
+                <option value="Tateti">Tateti</option>
+                <option value="Memotest">Memotest</option>
+                <option value="Piedra Papel o Tijera">
+                  Piedra Papel o Tijera
+                </option>
+              </select>
+              <div
+                *ngIf="
+                  encuestaForm.get('juegosAdd')?.invalid &&
+                  (encuestaForm.get('juegosAdd')?.touched ||
+                    encuestaForm.get('juegosAdd')?.dirty)
+                "
+                class="error-message"
+              >
+                Debes seleccionar una opción.
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="!encuestaForm.valid"
+            >
+              Enviar
+            </button>
+            <h2>{{ mensajeFinal }}</h2>
+            <div
+              *ngIf="mensajeFinal"
+              class="alert"
+              [ngClass]="{
+                'alert-success': mensajeFinal.includes('exitosamente'),
+                'alert-danger': !mensajeFinal.includes('exitosamente')
+              }"
+            >
+              {{ mensajeFinal }}
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

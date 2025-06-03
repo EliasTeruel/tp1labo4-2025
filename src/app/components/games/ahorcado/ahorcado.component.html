@@ -1,1 +1,57 @@
-<p>ahorcado works!</p>
+<div class="ahorcado-container">
+  <h1>Juego del Ahorcado</h1>
+
+  <div class="imagen-ahorcado">
+    <img
+      [src]="
+        'assets/images/ahorcado/ahorcado' + (6 - intentosRestantes) + '.png'
+      "
+      alt="Ahorcado"
+    />
+  </div>
+
+  <div class="palabra">
+    <span *ngFor="let letra of palabraMostrada">{{ letra }}</span>
+  </div>
+
+  <div class="letras-incorrectas">
+    <p>Letras incorrectas: {{ letrasIncorrectas.join(", ") }}</p>
+  </div>
+
+  <div class="intentos">
+    <p>Intentos restantes: {{ intentosRestantes }}</p>
+  </div>
+  <div class="scores">
+    <div class="current-score">Puntos: {{ score }}</div>
+    <div class="best-score">Mejor: {{ bestScore }}</div>
+  </div>
+  <div class="letras">
+    <button
+      *ngFor="let letra of 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')"
+      (click)="adivinarLetra(letra)"
+      [disabled]="letrasAdivinadas.includes(letra)"
+    >
+      {{ letra }}
+    </button>
+  </div>
+
+  <!-- <div *ngIf="juegoTerminado" class="mensaje-final mostrar">
+    <p>{{ mensajeFinal }}</p>
+    <button (click)="reiniciarJuego()">Reiniciar</button>
+  </div> -->
+
+<div class="modal-overlay" *ngIf="juegoTerminado && gano">
+  <div class="modal-content">
+    <p>¡Ganaste!</p>
+    <button (click)="reiniciarJuego()">Jugar de nuevo</button>
+  </div>
+</div>
+
+<div class="modal-overlay" *ngIf="juegoTerminado && !gano">
+  <div class="modal-content">
+    <p>¡Perdiste! La palabra era: {{ palabraSecreta }}</p>
+    <button (click)="reiniciarJuego()">Intentar de nuevo</button>
+  </div>
+</div>
+
+</div>

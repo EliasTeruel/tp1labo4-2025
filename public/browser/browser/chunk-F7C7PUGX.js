@@ -1,0 +1,1 @@
+import{Ma as n,Na as p,Xa as s,za as t}from"./chunk-GP4QNVJC.js";import"./chunk-FK42CRUA.js";var a=class o{static \u0275fac=function(e){return new(e||o)};static \u0275cmp=t({type:o,selectors:[["app-juego2048"]],decls:2,vars:0,template:function(e,i){e&1&&(n(0,"p"),s(1,"juego2048 works!"),p())},encapsulation:2})};export{a as Juego2048Component};

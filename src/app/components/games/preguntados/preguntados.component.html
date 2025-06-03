@@ -1,1 +1,58 @@
-<p>preguntados works!</p>
+<div class="quiz-container">
+  <h2 *ngIf="!loading && character">¿Que personaje es?</h2>
+
+  <div class="imagen-container" *ngIf="!loading">
+    <div *ngIf="imageLoading" class="spinner-container">
+      <div class="spinner"></div>
+    </div>
+
+    <img
+      [src]="character.image"
+      alt="{{ character.character }}"
+      (load)="onImageLoad()"
+      (error)="onImageError()"
+      [style.display]="imageLoading ? 'none' : 'block'"
+    />
+  </div>
+
+  <div *ngIf="loading" class="spinner-container">
+    <div class="spinner"></div>
+  </div>
+
+  <div *ngIf="!loading" class="botones-container">
+    <div class="botones-grid">
+      <button
+        *ngFor="let option of options"
+        (click)="checkAnswer(option)"
+        [ngClass]="{
+          correct: selectedAnswer === option && option === correctAnswer,
+          incorrect: selectedAnswer === option && option !== correctAnswer
+        }"
+      >
+        {{ option }}
+      </button>
+    </div>
+  </div>
+
+  <ng-container *ngIf="lives > 0">
+    <h3>Puntuación: {{ score }}</h3>
+    <h4>Vidas: {{ lives }}</h4>
+    <div class="best-score" *ngIf="bestScore > 0">
+      Mejor Puntuación: {{ bestScore }}
+    </div>
+    <div class="new-record" *ngIf="score > bestScore && bestScore > 0">
+      ¡Nuevo récord!
+    </div>
+  </ng-container>
+
+  <!-- <div *ngIf="gameOverMessage">
+    <h3>{{ gameOverMessage }}</h3>
+    <button (click)="resetGame()">Reiniciar Juego</button>
+  </div> -->
+<div class="modal-overlay" *ngIf="gameOverMessage">
+  <div class="modal-content">
+    <h3>{{ gameOverMessage }}</h3>
+    <button (click)="resetGame()">Reiniciar Juego</button>
+  </div>
+</div>
+</div>

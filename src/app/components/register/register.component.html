@@ -1,97 +1,99 @@
 <div class="register-container">
-    <div class="register-card">
-      <h1 class="register-title">Registro de Usuario</h1>
-      
-      <form class="register-form" (ngSubmit)="register()">
-        <div class="form-group">
-          <label for="email" class="form-label">Correo</label>
+  <div class="register-card">
+    <h1 class="register-title">Registro de Usuario</h1>
+
+    <form class="register-form" (ngSubmit)="register()">
+      <div class="form-group">
+        <label for="email" class="form-label">Correo</label>
+        <input
+          id="email"
+          type="text"
+          [(ngModel)]="email"
+          name="email"
+          class="form-control"
+          placeholder="ejemplo123"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password" class="form-label">Contraseña</label>
+        <input
+          id="password"
+          type="password"
+          [(ngModel)]="password"
+          name="password"
+          class="form-control"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="name" class="form-label">Nombre completo</label>
+        <input
+          id="name"
+          type="text"
+          [(ngModel)]="name"
+          name="name"
+          class="form-control"
+          placeholder="Pepe Argento"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="age" class="form-label">Edad</label>
+        <input
+          id="age"
+          type="number"
+          [(ngModel)]="age"
+          name="age"
+          class="form-control"
+          placeholder="25"
+          min="5"
+          max="90"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="avatar" class="form-label">Foto de perfil</label>
+        <div class="file-input-container">
           <input
-            id="email"
-            type="text"
-            [(ngModel)]="email"
-            name="email"
-            class="form-control"
-            placeholder="ejemplo123"
-            required
+            id="avatar"
+            type="file"
+            (change)="onFileSelected($event)"
+            class="file-input"
+            accept="image/*"
           />
+          <label for="avatar" class="file-input-label">
+            <i class="bi bi-upload"></i> Seleccionar archivo
+          </label>
+          <span class="file-name" *ngIf="selectedFile">{{
+            selectedFile.name
+          }}</span>
         </div>
-  
-        <div class="form-group">
-          <label for="password" class="form-label">Contraseña</label>
-          <input
-            id="password"
-            type="password"
-            [(ngModel)]="password"
-            name="password"
-            class="form-control"
-            placeholder="••••••••"
-            required
-          />
-        </div>
-  
-        <div class="form-group">
-          <label for="name" class="form-label">Nombre completo</label>
-          <input
-            id="name"
-            type="text"
-            [(ngModel)]="name"
-            name="name"
-            class="form-control"
-            placeholder="Pepe Argento"
-            required
-          />
-        </div>
-  
-        <div class="form-group">
-          <label for="age" class="form-label">Edad</label>
-          <input
-            id="age"
-            type="number"
-            [(ngModel)]="age"
-            name="age"
-            class="form-control"
-            placeholder="25"
-            min="5"
-            max="90"
-            required
-          />
-        </div>
-  
-        <div class="form-group">
-          <label for="avatar" class="form-label">Foto de perfil</label>
-          <div class="file-input-container">
-            <input
-              id="avatar"
-              type="file"
-              (change)="onFileSelected($event)"
-              class="file-input"
-              accept="image/*"
-            />
-            <label for="avatar" class="file-input-label">
-              <i class="bi bi-upload"></i> Seleccionar archivo
-            </label>
-            <span class="file-name" *ngIf="selectedFile">{{ selectedFile.name }}</span>
-          </div>
-        </div>
-  
-        
+      </div>
+
       <div *ngIf="errorMessage" class="alert alert-danger">
-        {{errorMessage}}
+        {{ errorMessage }}
       </div>
 
       <div *ngIf="successMessage" class="alert alert-success">
-        {{successMessage}}
+        {{ successMessage }}
       </div>
-        <button type="submit" class="btn btn-register" [disabled]="isLoading">
-            Registrarse
-            <span *ngIf="isLoading" class="spinner"></span>
-          </button>
-        
-  
-        <div class="login-link-container">
-          <p>¿Ya tienes una cuenta? <a routerLink="../login" class="login-link">Inicia sesión</a></p>
-        </div>
-      </form>
-    </div>
-</div>
+      <button type="submit" class="btn btn-register" [disabled]="isLoading">
+        Registrarse
+        <span *ngIf="isLoading" class="spinner"></span>
+      </button>
 
+      <div class="login-link-container">
+        <p>
+          ¿Ya tienes una cuenta?
+          <a routerLink="../login" class="login-link">Inicia sesión</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>

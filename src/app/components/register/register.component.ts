@@ -143,7 +143,6 @@ async register() {
 
     if (error) throw error;
 
-    // Obtener URL pública del archivo
     const { data: { publicUrl } } = supabase
       .storage
       .from('images')

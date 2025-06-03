@@ -1,37 +1,41 @@
 <h2>Mi perfil</h2>
 
 @if (userData) {
-  <div class="profile-card">
-    <div class="card-header">
-      
-      <img class="avatar" [src]="getAvatarUrl(userData.avatarUrl)" alt="Foto de perfil">
-      <h3>{{ userData.name }}</h3>
+<div class="profile-card">
+  <div class="card-header">
+    <img
+      class="avatar"
+      [src]="getAvatarUrl(userData.avatarUrl)"
+      alt="Foto de perfil"
+    />
+    <h3>{{ userData.name }}</h3>
+  </div>
+  <div class="card-body">
+    <div class="info-item">
+      <span class="label">Email:</span>
+      <span class="value">{{ userData.authEmail }}</span>
     </div>
-    <div class="card-body">
-      <div class="info-item">
-        <span class="label">Email:</span>
-        <span class="value">{{ userData.authEmail }}</span>
-      </div>
-      <div class="info-item">
-        <span class="label">Edad:</span>
-        <span class="value">{{ userData.age }}</span>
-      </div>
-      
-      <!-- <div class="info-item">
+    <div class="info-item">
+      <span class="label">Edad:</span>
+      <span class="value">{{ userData.age }}</span>
+    </div>
+
+    <!-- <div class="info-item">
         <span class="label">ID:</span>
         <span class="value">{{ userData.authId }}</span>
       </div> -->
-      <div class="info-item">
-        <span class="label">Último inicio de sesión:</span>
-        <span class="value">{{ userData.last_login | date:'dd/MM/yyyy HH:mm'  }}</span>
-      </div>
-      
+    <div class="info-item">
+      <span class="label">Último inicio de sesión:</span>
+      <span class="value">{{
+        userData.last_login | date : "dd/MM/yyyy HH:mm"
+      }}</span>
     </div>
   </div>
+</div>
 } @else {
-  <div class="not-logged-message">
-    <p>No estás logueado o no tienes un perfil creado.</p>
-  </div>
+<div class="not-logged-message">
+  <p>No estás logueado o no tienes un perfil creado.</p>
+</div>
 }
 <!-- <td>{{ userData.authId }}</td> -->
 <!-- <th>authId</th> -->

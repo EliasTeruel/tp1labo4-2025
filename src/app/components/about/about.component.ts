@@ -62,20 +62,18 @@ export class AboutComponent implements OnInit, OnDestroy {
   getAvatarUrl(avatarUrl: string) {
     console.log('Getting public URL for avatar:', avatarUrl);
     const customError: any = null;
-    // Verifica si `avatarUrl` ya es una URL completa
     if (avatarUrl.startsWith('http')) {
       console.warn('Avatar URL is already a full URL:', avatarUrl);
-      return avatarUrl; // Devuelve la URL directamente si ya es completa
+      return avatarUrl;
     }
-  
-    // Genera la URL pública desde Supabase
+
     const { data } = supabase.storage.from('images').getPublicUrl(avatarUrl);
-  
+
     if (!data) {
       console.error('Error fetching public URL for avatar: No data returned');
       return null;
     }
-  
+
     if (data?.publicUrl) {
       console.log('Public URL fetched successfully:', data.publicUrl);
       return data.publicUrl;

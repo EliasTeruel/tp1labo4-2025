@@ -1,100 +1,94 @@
 .navbar {
-    background: #3f51b5;  // Color de fondo (puedes cambiarlo)
+  background: #3f51b5;
+  color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
     color: white;
-    padding: 1rem 2rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  
-    &-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-  
-    &-brand {
-      font-size: 1.5rem;
-      font-weight: bold;
+    text-decoration: none;
+  }
+
+  &-links {
+    display: flex;
+    gap: 1.5rem;
+
+    a {
       color: white;
       text-decoration: none;
-    }
-  
-    &-links {
-      display: flex;
-      gap: 1.5rem;
-  
-      a {
-        color: white;
-        text-decoration: none;
-        transition: opacity 0.3s;
-  
-        &:hover {
-          opacity: 0.8;
-        }
-  
-        &.active {
-          font-weight: bold;
-          border-bottom: 2px solid white;
-        }
+      transition: opacity 0.3s;
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      &.active {
+        font-weight: bold;
+        border-bottom: 2px solid white;
       }
     }
-  
-    &-toggle {
-      display: none;  // Ocultar en desktop
-      background: none;
-      border: none;
+  }
+
+  &-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  &-mobile {
+    display: none;
+    flex-direction: column;
+    background: #3f51b5;
+    padding: 1rem;
+    gap: 1rem;
+
+    a {
       color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-  
-    &-mobile {
-      display: none;  // Solo visible en móvil al hacer clic
-      flex-direction: column;
-      background: #3f51b5;
-      padding: 1rem;
-      gap: 1rem;
-  
-      a {
-        color: white;
-        text-decoration: none;
-        padding: 0.5rem 0;
-  
-        &:hover {
-          opacity: 0.8;
-        }
+      text-decoration: none;
+      padding: 0.5rem 0;
+
+      &:hover {
+        opacity: 0.8;
       }
     }
   }
-  
-  // Responsive para móviles
-  @media (max-width: 768px) {
-    .navbar-links {
-      display: none !important;
-    }
-  
-    .navbar-toggle {
-      display: block !important;
-    }
-  
-    .navbar-mobile {
-      display: flex !important;
-    }
+}
+
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none !important;
   }
 
+  .navbar-toggle {
+    display: block !important;
+  }
 
-  // En navbar.component.scss
+  .navbar-mobile {
+    display: flex !important;
+  }
+}
+
 .navbar-links a {
-  // ... estilos existentes ...
-  
   &:hover {
     opacity: 0.8;
   }
-  
-  // Estilo para el enlace de Cerrar Sesión
+
   &.logout-link {
     color: #ff4444;
-    
+
     &:hover {
       color: #cc0000;
     }

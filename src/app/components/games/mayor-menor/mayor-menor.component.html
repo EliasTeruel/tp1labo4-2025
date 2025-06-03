@@ -1,1 +1,48 @@
-<p>mayor-menor works!</p>
+<div class="mayor-menor-container">
+  <h1>Mayor o Menor</h1>
+  <div *ngIf="loading && !cartaActual" class="spinner-container">
+    <div class="spinner"></div>
+  </div>
+
+  <div class="juego-container" *ngIf="!loading">
+    <div class="cartas" *ngIf="cartaActual">
+      <div *ngIf="imageLoading" class="spinner-container">
+        <div class="spinner"></div>
+      </div>
+
+      <img
+        [src]="cartaActual.image"
+        alt="Carta Actual"
+        (load)="onImageLoad()"
+        (error)="onImageError()"
+        [style.display]="imageLoading ? 'none' : 'block'"
+      />
+    </div>
+
+    <div class="botones">
+      <button (click)="adivinar('mayor')" [disabled]="imageLoading || loading">
+        Mayor
+      </button>
+      <button (click)="adivinar('menor')" [disabled]="imageLoading || loading">
+        Menor
+      </button>
+      <h2>Score: {{ score }}</h2>
+      <div class="score-container">
+        <div class="current-score">Puntuación actual: {{ score }}</div>
+        <div class="best-score">Mejor puntuación: {{ bestScore }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div *ngIf="mensajeFinal" class="mensaje-final">
+    <p>{{ mensajeFinal }}</p>
+    <button (click)="reiniciarJuego()">Reiniciar</button>
+  </div> -->
+
+  <div class="modal-overlay" *ngIf="mensajeFinal">
+  <div class="modal-content">
+    <p>{{ mensajeFinal }}</p>
+    <button (click)="reiniciarJuego()">Reiniciar</button>
+  </div>
+</div>
+</div>

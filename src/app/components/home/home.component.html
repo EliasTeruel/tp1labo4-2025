@@ -1,56 +1,41 @@
 <div class="card-container">
-    <div class="card" >
-      <img src="/ahorcado.png" class="card-img-top" alt="ahorcado">
-      <div class="card-body">
-        <h5 class="card-title">Ahorcado</h5>
-        <ng-container *ngIf="isLoggedIn">
-        <a  class="btn btn-custom" (click)="jugarJuego('ahorcado')">Jugar!</a>
+  <div class="card">
+    <img src="/ahorcado.png" class="card-img-top" alt="ahorcado" />
+    <div class="card-body">
+      <h5 class="card-title">Ahorcado</h5>
+      <ng-container *ngIf="isLoggedIn">
+        <a class="btn btn-custom" (click)="jugarJuego('ahorcado')">Jugar!</a>
       </ng-container>
-
-      </div>
     </div>
-  
-    <div class="card" >
-      <img src="/preguntados.png" class="card-img-top" alt="preguntados">
-      <div class="card-body">
-        <h5 class="card-title">Preguntados</h5>
-        <ng-container *ngIf="isLoggedIn">
-
-        <a  class="btn btn-custom" (click)="jugarJuego('preguntados')">Jugar!</a>
-      </ng-container>
-
-      </div>
-    </div>
-  
-    <div class="card" >
-      <img src="/mayorMenor.png" class="card-img-top" alt="mayor-menor">
-      <div class="card-body">
-        <h5 class="card-title">Mayor o Menor</h5>
-        <ng-container *ngIf="isLoggedIn">
-
-        <a  class="btn btn-custom" (click)="jugarJuego('mayorMenor')">Jugar!</a>
-      </ng-container>
-
-      </div>
-    </div>
-
-    <div class="card" >
-        <img src="/2048.png" class="card-img-top" alt="2048">
-        <div class="card-body">
-          <h5 class="card-title">2048</h5>
-        <ng-container *ngIf="isLoggedIn">
-
-          <a  class="btn btn-custom" (click)="jugarJuego('2048')">Jugar!</a>
-      </ng-container>
-
-        </div>
-      </div>
   </div>
 
+  <div class="card">
+    <img src="/preguntados.png" class="card-img-top" alt="preguntados" />
+    <div class="card-body">
+      <h5 class="card-title">Preguntados</h5>
+      <ng-container *ngIf="isLoggedIn">
+        <a class="btn btn-custom" (click)="jugarJuego('preguntados')">Jugar!</a>
+      </ng-container>
+    </div>
+  </div>
 
+  <div class="card">
+    <img src="/mayorMenor.png" class="card-img-top" alt="mayor-menor" />
+    <div class="card-body">
+      <h5 class="card-title">Mayor o Menor</h5>
+      <ng-container *ngIf="isLoggedIn">
+        <a class="btn btn-custom" (click)="jugarJuego('mayorMenor')">Jugar!</a>
+      </ng-container>
+    </div>
+  </div>
 
-
-
-
-
-
+  <div class="card">
+    <img src="/2048.png" class="card-img-top" alt="2048" />
+    <div class="card-body">
+      <h5 class="card-title">2048</h5>
+      <ng-container *ngIf="isLoggedIn">
+        <a class="btn btn-custom" (click)="jugarJuego('2048')">Jugar!</a>
+      </ng-container>
+    </div>
+  </div>
+</div>

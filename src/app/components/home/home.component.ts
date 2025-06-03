@@ -26,19 +26,17 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
-    //this.getUserData();
     this.authSubscription = this.supabase.authChanges.subscribe(
       (session) => {
         this.isLoggedIn = !!session;
       }
     );
-    
-    // Verificar estado inicial
+
     this.supabase.getSession().then(session => {
       this.isLoggedIn = !!session;
     });
     localStorage.removeItem('UserMailRegistered');
-        localStorage.removeItem('UserPWDRegisted');
+    localStorage.removeItem('UserPWDRegisted');
   }
   ngOnDestroy() {
     if (this.authSubscription) {
@@ -49,9 +47,9 @@ export class HomeComponent implements OnInit {
     if (true) {
       console.log('Juego:', juego);
       this.router.navigate([`/games/${juego}`]);
-      
+
     } else {
-      alert('Por favor, inicie sesión para jugar.');
+      alert('Por favor, inicie sesión para jugar.');  
     }
   }
 

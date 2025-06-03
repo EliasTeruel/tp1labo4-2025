@@ -1,1 +1,49 @@
-<p>juego2048 works!</p>
+<div class="game-container">
+  <div class="board">
+    <div class="row" *ngFor="let row of board; let i = index">
+      <div
+        class="cell"
+        *ngFor="let cell of row; let j = index"
+        [attr.data-value]="cell"
+      >
+        <span *ngIf="cell">{{ cell }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button (click)="move('left')">⬆️</button>
+    <button (click)="move('up')">⬅️</button>
+    <button (click)="move('down')">➡️</button>
+    <button (click)="move('right')">⬇️</button>
+  </div>
+
+  <div class="score-container">
+    <div class="score">Puntuación: {{ score }}</div>
+    <div class="best-score">Mejor: {{ bestScore }}</div>
+    <button class="new-game" (click)="inicializarJuego()">Nuevo Juego</button>
+  </div>
+ <!-- Modal para ganar -->
+<div class="modal-overlay" *ngIf="gameWon">
+  <div class="modal-content">
+    <p>¡Ganaste! Alcanzaste 2048</p>
+    <button (click)="inicializarJuego()">Jugar de nuevo</button>
+  </div>
+</div>
+
+<!-- Modal para perder -->
+<div class="modal-overlay" *ngIf="gameOver && !gameWon">
+  <div class="modal-content">
+    <p>¡Juego terminado! Puntuación: {{ score }}</p>
+    <button (click)="inicializarJuego()">Intentar de nuevo</button>
+  </div>
+</div>
+
+
+  <button (click)="setNearWinBoard()" style="margin-bottom: 10px;">
+  Dejar a 1 movimiento de ganar
+</button>
+<button (click)="setNearLoseBoard()" style="margin-bottom: 10px;">
+  Dejar a 1 movimiento de perder
+</button>
+</div>

@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { environment } from '../../../environments/environment';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 const supabase = createClient(environment.apiUrl, environment.publicAnonKey);
 
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit{
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
     this.loginForm = this.fb.group({
       userMail: ['', [Validators.required, Validators.email]],
@@ -68,7 +70,8 @@ export class LoginComponent implements OnInit{
   }
   
   quickLogin() {
-    const savedUserMail = localStorage.getItem('savedUserMail');
+    const savedUserMail = 'eliasteruel96@gmail.com';
+    // const savedUserMail = localStorage.getItem('savedUserMail');
     if (savedUserMail) {
       this.loginForm.patchValue({
         userMail: savedUserMail,
@@ -89,7 +92,6 @@ export class LoginComponent implements OnInit{
     const { userMail, userPWD } = this.loginForm.value;
     
     try {
-      // 1. Iniciar sesión con Supabase Auth
       const { data, error } = await supabase.auth.signInWithPassword({
         email: userMail,
         password: userPWD
@@ -98,9 +100,8 @@ export class LoginComponent implements OnInit{
       if (error) {
         this.handleLoginError(error);
       } else {
-        // 2. Actualizar última fecha de login en users-data
         await this.updateLastLogin(data.user.id);
-        
+        this.authService.setUserInfo(userMail);
         localStorage.setItem('savedUserMail', userMail);
         this.router.navigate(['/home']);
         localStorage.removeItem('UserMailRegistered');

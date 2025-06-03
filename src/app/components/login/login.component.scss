@@ -1,12 +1,15 @@
-
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   padding: 2rem;
-  background: linear-gradient(135deg, rgba(181,7,7,0.1) 0%, rgba(255,255,255,0.8) 100%);
-  
+  background: linear-gradient(
+    135deg,
+    rgba(181, 7, 7, 0.1) 0%,
+    rgba(255, 255, 255, 0.8) 100%
+  );
+
   .login-card {
     background: white;
     border-radius: 12px;
@@ -15,7 +18,7 @@
     width: 100%;
     max-width: 500px;
     transition: all 0.3s ease;
-    
+
     &:hover {
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
     }
@@ -23,7 +26,7 @@
 
   .login-title {
     color: #b50707;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 600;
     text-align: center;
     margin-bottom: 2rem;
@@ -43,7 +46,7 @@
   }
 
   .form-label {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 500;
     color: #333;
     font-size: 0.9rem;
@@ -56,13 +59,13 @@
     font-size: 1rem;
     transition: all 0.3s ease;
     background-color: rgba(255, 255, 255, 0.9);
-    
+
     &:focus {
       border-color: #b50707;
       box-shadow: 0 0 0 3px rgba(181, 7, 7, 0.2);
       outline: none;
     }
-    
+
     &.is-invalid {
       border-color: #dc3545;
     }
@@ -89,14 +92,14 @@
   .btn {
     padding: 0.75rem;
     border-radius: 8px;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 500;
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
     width: 100%;
-    
+
     &:disabled {
       opacity: 0.7;
       cursor: not-allowed;
@@ -106,7 +109,7 @@
   .btn-login {
     background-color: #b50707;
     color: white;
-    
+
     &:hover:not(:disabled) {
       background-color: darken(#b50707, 10%);
       transform: translateY(-2px);
@@ -117,7 +120,7 @@
     background-color: #f8f9fa;
     color: #333;
     border: 1px solid #ddd;
-    
+
     &:hover {
       background-color: #e9ecef;
     }
@@ -127,7 +130,7 @@
     text-align: center;
     margin-top: 1rem;
     color: #6c757d;
-    
+
     p {
       margin-bottom: 0.5rem;
     }
@@ -136,7 +139,7 @@
   .btn-register {
     background-color: #28a745;
     color: white;
-    
+
     &:hover {
       background-color: darken(#28a745, 10%);
     }
@@ -146,11 +149,11 @@
 @media (max-width: 768px) {
   .login-container {
     padding: 1rem;
-    
+
     .login-card {
       padding: 1.5rem;
     }
-    
+
     .login-title {
       font-size: 1.5rem;
       margin-bottom: 1.5rem;

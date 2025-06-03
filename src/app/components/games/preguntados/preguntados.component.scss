@@ -1,0 +1,142 @@
+.quiz-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.imagen-container img {
+  width: 250px;
+  height: 250px;
+}
+
+.botones-container {
+  margin-top: 20px;
+}
+
+.botones-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+.correct {
+  background-color: #28a5a7;
+  border: 2px solid #1e7e34;
+}
+
+.incorrect {
+  background-color: #dc3545;
+  border: 2px solid #c82333;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+}
+
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.best-score {
+  font-size: 1.2em;
+  color: #4caf50;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.new-record {
+  font-size: 1.1em;
+  color: #ffd700;
+  animation: pulse 1.5s infinite;
+  margin-top: 5px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(30, 30, 30, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fffbe7;
+  padding: 40px 30px 30px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  text-align: center;
+  min-width: 300px;
+  font-size: 1.5rem;
+  color: #8f7a66;
+  animation: fadeInModal 0.3s;
+}
+
+.modal-content button {
+  margin-top: 20px;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.modal-content button:hover {
+  background-color: #218838;
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; transform: scale(0.9);}
+  to { opacity: 1; transform: scale(1);}
+}
